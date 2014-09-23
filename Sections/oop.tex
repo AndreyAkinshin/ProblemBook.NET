@@ -1,0 +1,190 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Oop-Overloading1}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  void Foo(object a)
+  {
+    Console.WriteLine("object");
+  }
+  void Foo(object a, object b)
+  {
+    Console.WriteLine("object, object");
+  }
+  void Foo(params object[] args)
+  {
+    Console.WriteLine("params object[]");
+  }
+  void Foo<T>(params T[] args)
+  {
+    Console.WriteLine("params T[]");
+  }
+  class Bar { }
+  void Main()
+  {
+    Foo();
+    Foo(null);
+    Foo(new Bar());
+    Foo(new Bar(), new Bar());
+    Foo(new Bar(), new object());
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  params object[]
+  params object[]
+  params T[]
+  params T[]
+  object, object
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Oop-Overloading2}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  class Foo
+  {
+    public virtual void Quux(int a)
+    {
+      Console.WriteLine("Foo.Quux(int)");
+    }
+  }
+  class Bar : Foo
+  {
+    public override void Quux(int a)
+    {
+      Console.WriteLine("Bar.Quux(int)");
+    }
+    public void Quux(object a)
+    {
+      Console.WriteLine("Bar.Quux(object)");
+    } 
+  }
+  class Baz : Bar
+  {
+    public override void Quux(int a)
+    {
+      Console.WriteLine("Baz.Quux(int)");
+    }
+    public void Quux<T>(params T[] a)
+    {
+      Console.WriteLine("Baz.Quux(params T[])");
+    }
+  }
+  void Main()
+  {
+    new Bar().Quux(42);
+    new Baz().Quux(42);
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  Bar.Quux(object)
+  Baz.Quux(params T[])
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Oop-Overloading3}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  class Foo
+  {
+    public Foo()
+    {
+      Quux();
+    }
+    public virtual void Quux()
+    {
+      Console.WriteLine("Foo.Quux()");
+    }
+  }
+  class Bar : Foo
+  {
+    protected string name;
+    public Bar()
+    {
+      name = "Bar";
+    }
+    public override void Quux()
+    {
+      Console.WriteLine("Bar.Quux(),  " + name);
+    }
+    public void Quux(params object[] args)
+    {
+      Console.WriteLine("Bar.Quux(params object[])");
+    }
+  }
+  class Baz : Bar
+  {
+    public Baz()
+    {
+      name = "Baz";
+      Quux();
+    ((Foo)this).Quux();
+    }  
+  }
+  void Main() 
+  {
+    new Baz();
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  Bar.Quux(),
+  Bar.Quux(params object[])
+  Bar.Quux(),Baz
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Oop-InheritanceNestedClass}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  class Foo
+  {
+    protected class Quux
+    {
+      public Quux()
+      {
+        Console.WriteLine("Foo.Quux()");
+      }
+    }
+  }
+  class Bar : Foo
+  {
+    new class Quux
+    {
+      public Quux()
+      {
+        Console.WriteLine("Bar.Quux()");
+      }
+    }
+  }
+  class Baz : Bar
+  {
+    public Baz()
+    {
+      new Quux();
+    }
+  }
+  void Main() 
+  {
+    new Baz();
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  Foo.Quux()
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

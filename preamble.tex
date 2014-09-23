@@ -1,0 +1,113 @@
+\usepackage{geometry}
+\geometry{top=2.5cm}
+\geometry{bottom=2.5cm}
+\geometry{left=2cm}
+\geometry{right=1cm}
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{pscyr}
+
+\usepackage{lscape}
+\usepackage{indentfirst}
+
+\usepackage[usenames]{color}
+\usepackage{color}
+\usepackage{colortbl}
+
+\usepackage[singlelinecheck=off,center]{caption}
+\usepackage{soul,ulem}
+\usepackage{enumitem}
+\usepackage{bbding}
+\usepackage{tikz}
+
+\usepackage[us]{datetime}
+\makeatletter
+\renewcommand*{\shortmonthnameenglish}[1][\month]{%
+  \@orgargctr=#1\relax
+  \ifcase\@orgargctr
+  \PackageError{datetime}{Invalid Month number \the\@orgargctr}{Month
+  numbers should go from 1 (january) to 12 (december)}%
+  \or Jan%
+  \or Feb%
+  \or Mar%
+  \or Apr%
+  \or May%
+  \or Jun%
+  \or Jul%
+  \or Aug%
+  \or Sep%
+  \or Oct%
+  \or Nov%
+  \or Dec%
+  \else \PackageError{datetime}{Invalid Month number \the\@orgargctr}{%
+  Month numbers should go from 1 (january) to 12 (december)}%
+  \fi
+}
+\makeatother
+\newdateformat{versiondate}{\THEYEAR-\shortmonthnameenglish[\THEMONTH]-\twodigit{\THEDAY}}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\bfseries\filcenter}
+{\LARGE\thechapter}
+{1ex}
+{\titlerule[2pt]
+\vspace{2ex}%
+\LARGE}
+[\vspace{1ex}%
+{\titlerule[2pt]}]
+
+\usepackage[plainpages=false,pdfpagelabels=false,unicode]{hyperref}
+\definecolor{hyperlinkcolor}{rgb}{0,0,1}
+\hypersetup{
+    colorlinks, linkcolor={hyperlinkcolor},
+    citecolor={hyperlinkcolor}, urlcolor={hyperlinkcolor}
+}
+
+\newcommand{\internalhref}[2]{\hyperref[#1]{\dashuline{#2}}}
+
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+
+\sloppy
+\clubpenalty=10000
+\widowpenalty=10000
+
+\renewcommand\thesection{\arabic{section}}
+
+\usepackage{probsoln}
+\setkeys{probsoln}{fragile}
+
+\newcommand{\printproblems}[1]{%
+\begin{enumerate}%
+\foreachproblem[#1] 
+{%
+\begin{samepage}%
+\item \label{problem:\thisproblemlabel}%
+\thisproblem \nopagebreak \par \nopagebreak%
+\internalhref{solution:\thisproblemlabel}{Решение}%
+\end{samepage}%
+}%
+\end{enumerate}%
+}
+
+\newcommand{\printsolutions}[1]{%
+\showanswers%
+\begin{enumerate}%
+\foreachsolution[#1] {\item \label{solution:\thisproblemlabel}%
+\internalhref{problem:\thisproblemlabel}{Задача «\thisproblemlabel»}%
+\nopagebreak \par \nopagebreak%
+\thisproblem}%
+\end{enumerate}%
+}
+
+\newcommand{\todo}{\textcolor{red}{TODO}}
+
+\usepackage{minted}
+\usemintedstyle{vs}
+\newminted[source]{csharp}{encoding=utf-8,autogobble,frame=single,framesep=2mm,samepage}
+\newmintinline[csharpcode]{csharp}{}
+\newcommand{\code}[1]{\csharpcode{#1}}

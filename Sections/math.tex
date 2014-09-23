@@ -1,0 +1,190 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Math-Rounding1}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  Console.WriteLine(
+    "| Number | Round | Floor | Ceiling | Truncate | Format |");
+  foreach (var x in new[] { -2.9, -0.5, 0.3, 1.5, 2.5, 2.9 })
+  {
+    Console.WriteLine(string.Format(CultureInfo.InvariantCulture,
+      "| {0,6} | {1,5} | {2,5} | {3,7} | {4,8} | {0,6:N0} |",
+      x, Math.Round(x), Math.Floor(x), 
+      Math.Ceiling(x), Math.Truncate(x)));
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  | Number | Round | Floor | Ceiling | Truncate | Format |
+  |   -2.9 |    -3 |    -3 |      -2 |       -2 |     -3 |
+  |   -0.5 |     0 |    -1 |       0 |        0 |     -1 |
+  |    0.3 |     0 |     0 |       1 |        0 |      0 |
+  |    1.5 |     2 |     1 |       2 |        1 |      2 |
+  |    2.5 |     2 |     2 |       3 |        2 |      3 |
+  |    2.9 |     3 |     2 |       3 |        2 |      3 |
+  \end{source}
+  \code{Math.Round} по умолчанию округляет к ближайшему чётному целому.\newline
+  \code{Math.Floor} округляет вниз по направлению к отрицательной бесконечности.\newline
+  \code{Math.Ceiling} округляет вверх по направлению к положительной бесконечности.\newline
+  \code{Math.Truncate} округляет вниз или вверх по направлению к нулю.\newline
+  \code{String.Format} округляет к числу, которое дальше он нуля.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Math-Rounding2}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  Action<int,int> print = (a, b) =>
+    Console.WriteLine("{0,2} = {1,2} * {2,3}   + {3,3}  ",
+                      a, b, a/b, a%b);
+  Console.WriteLine(" a =  b * (a/b) + (a%b)");
+  print(7, 3);
+  print(7, -3);
+  print(-7, 3);
+  print(-7, -3);
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+   a =  b * (a/b) + (a%b)
+   7 =  3 *   2   +   1  
+   7 = -3 *  -2   +   1  
+  -7 =  3 *  -2   +  -1  
+  -7 = -3 *   2   +  -1  
+  \end{source}
+  При целочисленном делении результат всегда округляется по направлению к нулю.
+  При взятии остатка от деления должно выполняться следующее правило: $x \% y = x – (x / y) * y$.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Math-Eps}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  Console.WriteLine("0.1 + 0.2 {0} 0.3", 
+    0.1 + 0.2 == 0.3 ? "==" : "!=");
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  0.1 + 0.2 != 0.3
+  \end{source}
+  Числа типа \code{Double} представляются согласно спецификации IEEE 754 и хранятся в 64-разрядном бинарном формате. К сожалению, многие десятичные нецелые числа невозможно представить в таком формате, что часто сказывается при выполнении арифметических операций над числами с плавающей запятой:
+  \begin{source}
+  // Displays '5.5511151231257827E-17'
+  Console.WriteLine("{0:R}", 0.1+0.2-0.3);
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Math-DivideByZero}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  var zero = 0;
+  try
+  {
+    Console.WriteLine(42 / 0.0);
+    Console.WriteLine(42.0 / 0);
+    Console.WriteLine(42 / zero);
+  }
+  catch (DivideByZeroException)
+  {
+    Console.WriteLine("DivideByZeroException");
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  Infinity
+  Infinity
+  DivideByZeroException
+  \end{source}
+  Первые две строчки выполнятся и выведут \code{Infinity}. При деление произойдёт конвертация \code{int} к \code{double}, а операция \code{double operator /(double x, double y)} выполняется согласно IEEE 754 (ECMA-334, 14.7.2), а значит при делении положительного числа на положительный ноль должна вернуть положительную бесконечность.
+  Операция \code{int operator /(int x, int y)} бросает DivideByZeroException в случае, если правый операнд равен нулю (ECMA-334, 14.7.2). Поэтому третья операция деление выбросит исключение, о чём будет выведено соответствующее сообщение.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Math-Overflow}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  var maxInt32 = Int32.MaxValue;
+  var maxDouble = Double.MaxValue;
+  var maxDecimal = Decimal.MaxValue;
+  checked
+  {
+    Console.Write("Checked   Int32   increased max: ");
+    try { Console.WriteLine(maxInt32 + 42); }
+    catch { Console.WriteLine("OverflowException"); }
+    Console.Write("Checked   Double  increased max: ");
+    try { Console.WriteLine(maxDouble + 42); }
+    catch { Console.WriteLine("OverflowException"); }
+    Console.Write("Checked   Decimal increased max: ");
+    try { Console.WriteLine(maxDecimal + 42); }
+    catch { Console.WriteLine("OverflowException"); }
+  }
+  unchecked
+  {
+    Console.Write("Unchecked Int32   increased max: ");
+    try { Console.WriteLine(maxInt32 + 42); }
+    catch { Console.WriteLine("OverflowException"); }
+    Console.Write("Unchecked Double  increased max: ");
+    try { Console.WriteLine(maxDouble + 42); }
+    catch { Console.WriteLine("OverflowException"); }
+    Console.Write("Unchecked Decimal increased max: ");
+    try { Console.WriteLine(maxDecimal + 42); }
+    catch { Console.WriteLine("OverflowException"); }
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  Checked   Int32   increased max: OverflowException
+  Checked   Double  increased max: 1,79769313486232E+308
+  Checked   Decimal increased max: OverflowException
+  Unchecked Int32   increased max: -2147483607
+  Unchecked Double  increased max: 1,79769313486232E+308
+  Unchecked Decimal increased max: OverflowException
+  \end{source}
+  Операции с переполнением \code{sbyte}, \code{byte}, \code{short}, \code{ushort}, \code{int}, \code{uint}, \code{long}, \code{ulong}, \code{char} выбрасывают исключение OverflowException в зависимости от \code{checked}/\code{unchecked}-контекста (ECMA-334, 11.1.5).
+  Операции с переполнением \code{float}, \code{double} не выбрасывают исключение OverflowException (ECMA-334, 11.1.6).
+  Операции с переполнением \code{decimal} не выбрасывают исключение OverflowException (ECMA-334, 11.1.7).
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Math-AugmentedAssignment}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  int a = 0;
+  int Foo()
+  {
+    a = a + 42;
+    return 1;
+  }
+  void Main()
+  {
+    a += Foo();
+    Console.WriteLine(a);
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  1
+  \end{source}
+  Конструкция
+  \begin{source}
+  a += Foo();
+  \end{source}
+  развернётся в
+  \begin{source}
+  a = a + Foo();
+  \end{source}
+  Сначала оценится левый операнд \code{a}, равный нулю. Затем оценится правый операнд, который вернёт 1. В итоге в \code{a} запишется значение 1, не смотря на то, что внутри метода \code{Foo} произошло переприсвоение поля \code{a}.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

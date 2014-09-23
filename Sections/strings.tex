@@ -1,0 +1,257 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-PlusOperator}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  Console.WriteLine(1 + 2 + "A");
+  Console.WriteLine(1 + "A" + 2);
+  Console.WriteLine("A" + 1 + 2);
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  3A
+  1A2
+  A12
+  \end{source}
+  Оператор \code{+} является лево-ассоциативным. Это означает, что в первом случае выполнится сначала целочисленное сложение, а затем сложение числа и строки, которое будет сопровождаться конвертированием числа в строку. Во втором и третьем случае результат первого сложения будет строкой.
+  \begin{source}
+  1 + 2 + "A" = ((1 + 2) + "A") = 3 + "A"  = "3A"
+  1 + "A" + 2 = ((1 + "A") + 2) = "1A" + 2 = "1A2"
+  "A" + 1 + 2 = (("A" + 1) + 2) = "A1" + 2 = "A12"
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-PlusOperatorChar}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  Console.WriteLine(1 + 2 + 'A');
+  Console.WriteLine(1 + 'A' + 2);
+  Console.WriteLine('A' + 1 + 2);
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  68
+  68
+  68
+  \end{source}
+  При сложении типов \code{Int32} и \code{Char} произойдёт конвертация символа в строку. Таким образом, во всех трёх случаях результат будет представлять собой код символа \code{'A'} (65), увеличенный на 3.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-CaseConvertionInComparison}
+\begin{onlyproblem}
+  Являются ли следующие способы сравнения срок \code{a} и \code{b} без учёта регистра эквивалентными:
+  \begin{source}
+  Console.WriteLine(
+    string.Compare(a.ToUpper(), b));
+  Console.WriteLine(
+    string.Compare(a, b, StringComparison.OrdinalIgnoreCase));
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  Нет, в некоторых локалях результат будет разный. Пример:
+  \begin{source}
+  var a = "i";
+  var b = "I";
+  Thread.CurrentThread.CurrentCulture = 
+    CultureInfo.CreateSpecificCulture("tr-TR");
+  Console.WriteLine(
+    string.Compare(a.ToUpper(), b)); //'1'
+  Console.WriteLine(
+    string.Compare(a, b, StringComparison.OrdinalIgnoreCase)); //'0'
+  \end{source}
+  См. \href{http://www.moserware.com/2008/02/does-your-code-pass-turkey-test.html}{The Turkey Test}.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-CultureNegativeSign}
+\begin{onlyproblem}
+  Допишите следующий код так, чтобы он вывод на консоль содержал в себе строку \code{"Foo"}, не переопределяя стандартный метод \code{Console.WriteLine}?
+  \begin{source}
+  // ???
+  Console.WriteLine(-42);
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  Задание можно выполнить с использованием пользовательской локали:
+  \begin{source}
+  var culture = (CultureInfo) CultureInfo.InvariantCulture.Clone();
+  culture.NumberFormat.NegativeSign = "Foo";
+  Thread.CurrentThread.CurrentCulture = culture;
+  Console.WriteLine(-42); // Displays 'Foo42'
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-CurrentCulture}
+\begin{onlyproblem}
+  Рассмотрим следующий код:
+  \begin{source}
+  Thread.CurrentThread.CurrentUICulture = 
+    CultureInfo.CreateSpecificCulture("ru-RU");
+  Thread.CurrentThread.CurrentCulture = 
+    CultureInfo.CreateSpecificCulture("en-US");
+  var dateTime = new DateTime(2014, 12, 31, 13, 1, 2);
+  Console.WriteLine(dateTime);
+  \end{source}
+  В какой локали будет отформатирована дата?
+\end{onlyproblem}
+\begin{onlysolution}
+  Для форматирования даты будет использоваться \code{CurrentCulture}. Таким образом, дата будет выведена с использованием \code{en-US} локали:
+  \begin{source}
+  12/31/2014 1:01:02 PM
+  \end{source}
+  вместо локали \code{ru-RU}. В русской локали мы бы получили:
+  \begin{source}
+  31.12.2014 13:01:02
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-CompareToVsEquals}
+\begin{onlyproblem}
+  Могут ли две строки совпасть по методу \code{String.CompareTo}, но различаться по методу \code{String.Equals}? Как с ними связан оператор \code{==}?
+\end{onlyproblem}
+\begin{onlysolution}
+  Да, т.к. по умолчанию \code{CompareTo} выполняется с учётом региональных стандартов, а \code{Equals} — без.\newline
+  Пример: строки ``\ss'' (Эсцет, \textbackslash u00df) и ``ss'' совпадут по \code{CompareTo} в немецкой локали, несмотря на то, что они разной длины.\newline
+  Выполнение оператора \code{==} совпадает с поведением метода \code{String.Equals}.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-Internment1}
+\begin{onlyproblem}
+  Допишите следующий код так, чтобы он вывел на консоль строку \code{"aaaaa"}, не переопределяя стандартный метод \code{Console.WriteLine}?
+  \begin{source}
+  // ???
+  Console.WriteLine("Hello");
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  Можно заинтергировать строку \code{"Hello"}, а затем через unsafe-код добраться до соответствующего участка памяти и изменить целевое значение:  
+  \begin{source}
+  var s = "Hello";
+  string.Intern(s);
+  unsafe
+  {
+    fixed (char* c = s)
+      for (int i = 0; i < s.Length; i++)
+        c[i] = 'a';
+  }
+  Console.WriteLine("Hello"); // Displays: 'aaaaa'
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-Internment2}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  var x = "AB";
+  var y = new StringBuilder().Append('A').Append('B').ToString(); 
+  var z = string.Intern(y);
+  Console.WriteLine(x == y);
+  Console.WriteLine(x == z);
+  Console.WriteLine((object)x == (object)y);
+  Console.WriteLine((object)x == (object)z);
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  True
+  True
+  False
+  True
+  \end{source}
+  Первые две строчки содержат \code{True}, т.к. для выражений \code{x == y} и \code{x == z} будет вызвана перегрузка оператора \code{==} для строк, а строки совпадают. В последних двух строчках будет вызвана перегрузка оператора \code{==} для объектов, которая сравнит объекты по ссылке. Строка \code{"AB"} является заинтернированной и хранится в специальной таблице памяти. Переменная \code{x} указывает на интернированное значение, т.к. определена с помощью литерала. Переменная \code{z} указывает на это же значение, т.к. определена с помощью метода \code{string.Intern}. А переменная \code{y} будет указывать на другую область памяти, т.к. была определена через \code{StringBuilder}, который при вызове метода \code{ToString()} не учитывает интернированные значения.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-Internment3}
+\begin{onlyproblem}
+  Допустим, мы пометили сборку атрибутом:
+  \begin{source}
+  [assembly: CompilationRelaxationsAttribute
+    (CompilationRelaxations.NoStringInterning)]
+  \end{source}
+  Значит ли это, что литеральные строки в этой сборке не будут интернироваться?
+\end{onlyproblem}
+\begin{onlysolution}
+  Нет. Документация \href{http://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.compilationrelaxations.aspx}{гласит}, что в этом \code{NoStringInterning} лишь помечает сборку, как не требующую интернирования. Поэтому CLR только может не интернировать строки, но не обязана. Кроме того, мы всегда может заинтернировать строку через метод \code{String.Intern}.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-Internment4}
+\begin{onlyproblem}
+  Если механизм интернирования строк под данную версию CLR отключен, а в коде литеральная строчка \code{"Hello"} встречается дважды, то сколько раз она будет встречаться в метаданных сборки?
+\end{onlyproblem}
+\begin{onlysolution}
+  Один. Интернирование строк происходит во время выполнения программы и не имеет отношения к метаданным.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-Secure}
+\begin{onlyproblem}
+  Хранить в обычных строках секретные данные (например, пароль) нельзя, т.к. строка хранится в памяти в открытом виде, злоумышленники могут легко до неё добраться. Какими стандартными средствами можно защитить данные?
+\end{onlyproblem}
+\begin{onlysolution}
+  Нужно хранить строчку с использованием класса \code{SecureString}.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{StableSorting}
+\begin{onlyproblem}
+  Пусть у нас имеется массив различных строк. Может ли метод сортировки от раза к разу давать разные результаты?
+\end{onlyproblem}
+\begin{onlysolution}
+  Да, стандартная сортировка в .NET является неустойчивой, а значит, если мы, скажем, сортируем строки без учёта регистра, то строки \code{"AAA"} и \code{"aaa"} могут расположиться в любом порядке.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-StringBuilder1}
+\begin{onlyproblem}
+  Будет ли происходить копирование символьного массива при вызове метода \code{StringBuilder.ToString()}:?
+  \begin{source}
+  var builder = new StringBuilder(10);
+  for (int i = 0; i < 10; i++)
+    builder.Append('a');
+  var str = builder.ToString();
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  CLR 2.0: Нет, в новая строка будет ссылаться на тот же символьный массив, что и исходный \code{StringBuilder}.\\
+  CLR 4.0: Да, в этой версии платформы массив всегда копируется.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-StringBuilder2}
+\begin{onlyproblem}
+  Допустим, у нас имеется \code{StringBuilder}, хранящий строчку из трёх символов. Возможен ли сценарий, в котором при замене первого символа произойдёт выделение памяти под новый символьный массив?
+\end{onlyproblem}
+\begin{onlysolution}
+  Да, если предыдущим методом был \code{StringBuilder.ToString()}, а используемая версия CLR меньше 4.0.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-TextElementEnumerator}
+\begin{onlyproblem}
+  Может ли количество текстовых элементов (которые можно получить через \code{TextElementEnumerator}) строки отличаться от количество образующих её char-символов?
+\end{onlyproblem}
+\begin{onlysolution}
+  Да, т.к. FCL поддерживает кодировки, использующие больше 16-ти разрядов: один текстовый элемент может определяться несколькими \code{char}-символами.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{Strings-VerbatimString}
+\begin{onlyproblem}
+  Как включить в литеральную строку знак обратного слэша \textbackslash~ без использования управляющей последовательности?
+\end{onlyproblem}
+\begin{onlysolution}
+  Нужно использовать verbatim string: \code{@"\"}.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

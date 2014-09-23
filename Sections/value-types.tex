@@ -1,0 +1,155 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{ValueTypes-Boxing}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  struct Foo
+  {   
+    int value;
+    public override string ToString()
+    { 
+      if (value == 2)
+        return "Baz";
+      return (value++ == 0) ? "Foo" : "Bar";
+    }
+  }
+  void Main()
+  { 
+    var foo = new Foo();
+    Console.WriteLine(foo);
+    Console.WriteLine(foo);
+    object bar = foo;
+    object qux = foo;
+    object baz = bar;
+    Console.WriteLine(baz);
+    Console.WriteLine(bar);
+    Console.WriteLine(baz);
+    Console.WriteLine(qux);
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  Foo
+  Foo
+  Foo
+  Bar
+  Baz
+  Foo
+  \end{source}
+  Ключевым моментом в понимании примера является тот факт, что при вызове метода \code{ToString()} (который автоматически вызывается при вызове \code{Console.WriteLine}) для структуры \code{Foo} структура упаковывается. А это означает, что в управляемой куче создаётся копия структуры, метод \code{ToString()} отрабатывает для упакованной копии. Теперь разберём пример по строчкам:
+  \begin{source}
+  var foo = new Foo();
+  Console.WriteLine(foo); // Displays "Foo" (value == 0)
+  Console.WriteLine(foo); // Displays "Foo" (value == 0)
+  \end{source}
+  Мы создали экземпляр структуры \code{Foo} и дважды выполнили для него \code{Console.WriteLine(foo)}. Дважды выполнилась копирование и упаковка структуры, \code{ToString()} вызвалось для копии, не тронув оригинал. Изначально \code{Foo.value == 0}, так что в обоих случаях выведется \code{"Foo"}.
+  \begin{source}
+  object bar = foo;
+  object qux = foo;
+  object baz = bar;
+  \end{source}
+  Тут мы явно выполняем упаковку структуры. Объекты \code{bar} и \code{qux} указывают на разные копии структуры, т.к. мы выполнили две отдельных операции упаковки. Объект \code{baz} указывает на ту же копию структуры, что и \code{bar}, т.к. в третьей строчке мы просто выполнили копирование ссылки.
+  \begin{source}
+  Console.WriteLine(baz); // Displays "Foo" (value == 0)
+  Console.WriteLine(bar); // Displays "Bar" (value == 1)
+  Console.WriteLine(baz); // Displays "Baz" (value == 2)
+  \end{source}
+  В этих трёх строчках мы работаем с одной и той же копией структуры, обращаясь к ней по ссылке (\code{bar} и \code{baz} представляют собой одну и ту же ссылку).
+  \begin{source}
+  Console.WriteLine(qux); // Displays "Foo" (value == 0)
+  \end{source}
+  А в этой строчке мы работаем с копией структуры, для которой метод \code{ToString()} ещё ни разу не вызывался. Поэтому выведется \code{"Foo"}.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{ValueTypes-MutableProperty}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  public struct Foo
+  {
+    public int Value;
+    public void Change(int newValue)
+    {
+      Value = newValue;
+    }
+  }
+  public class Bar
+  {
+    public Foo Foo { get; set; }
+  }
+  void Main()
+  {
+    var bar = new Bar { Foo = new Foo() };
+    bar.Foo.Change(5);
+    Console.WriteLine(bar.Foo.Value);
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  0
+  \end{source}
+  Структуры, как мы знаем, копируются по значению. При обращении к свойству \code{bar.Foo} вызовется метод \code{bar.get_Foo()}, который вернёт нам копию структуры, для которой мы выполним метод \code{Change}. При этом оригинальная структура останется без изменений. В последней строчке метода \code{Main} мы вновь обращаемся к методу \code{bar.get_Foo()} и берём значение \code{Value} для новой копии \code{Foo}, равное нулю.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{ValueTypes-Enumerator}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+   var x = new 
+     {
+       Items = new List<int> { 1, 2, 3 }.GetEnumerator()
+     };
+   while (x.Items.MoveNext())
+     Console.WriteLine(x.Items.Current);
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  Цикл зависнет, будут выводиться нули. Для понимания этого факта необходимо вспомнить, что метод \code{GetEnumerator} для \code{List<T>} \href{http://msdn.microsoft.com/en-us/library/x854yt9s(v=vs.110).aspx}{возвращает} структуру. А значит, при каждом обращении к методу \code{x.Items.MoveNext()} мы будем работать не с оригинальным енумератором, а с его копией, не меняя при этом внутреннее состояние исходного енумератора (а именно, его текущий элемент \code{x.Items.Current}). Таким образом, в условии цикла ничего полезного не происходит, текущий элемент на веки останется нулём.
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defproblem}{ValueTypes-StructLayout}
+\begin{onlyproblem}
+  Что выведет следующий код?
+  \begin{source}
+  public struct Foo
+  {
+    public byte Byte1;
+    public int Int1;
+  }
+  public struct Bar
+  {
+    public byte Byte1;
+    public byte Byte2;
+    public byte Byte3;
+    public byte Byte4;
+    public int Int1;
+  }
+  void Main()
+  {
+    Console.WriteLine(Marshal.SizeOf(typeof(Foo)));
+    Console.WriteLine(Marshal.SizeOf(typeof(Bar)));
+  }
+  \end{source}
+\end{onlyproblem}
+\begin{onlysolution}
+  \begin{source}
+  8
+  8
+  \end{source}
+  Если явно не задано, то CLR автоматически управляет размещением данных в структуре. В данном случае происходит выравнивание полей по границе 4 байт, в результате чего общий размер структуры составит 8 байт. Пользователь может явно управлять выравниванием. Например, если пометить \code{Foo} атрибутом \code{StructLayout} следующим образом:
+  \begin{source}
+  [StructLayout(LayoutKind.Sequential, Pack=1)]
+  public struct Foo
+  \end{source}
+  то мы заставим CLR размещать поля последовательно, выравнивания их по границе 1 байта, в результате чего получим:
+  \begin{source}
+  Console.WriteLine(Marshal.SizeOf(typeof(Foo))); // Displays '5'
+  \end{source}
+\end{onlysolution}
+\end{defproblem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
