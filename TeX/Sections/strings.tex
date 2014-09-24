@@ -47,7 +47,7 @@
   Являются ли следующие способы сравнения срок \code{a} и \code{b} без учёта регистра эквивалентными:
   \begin{source}
   Console.WriteLine(
-    string.Compare(a.ToUpper(), b));
+    string.Compare(a.ToUpper(), b.ToUpper());
   Console.WriteLine(
     string.Compare(a, b, StringComparison.OrdinalIgnoreCase));
   \end{source}
