@@ -15,7 +15,7 @@
    * [QueryWithInc](linq/QueryWithInc-Q.md)
    * [YieldExceptionYield](linq/YieldExceptionYield-Q.md)
    * [ExceptionYieldYield](linq/ExceptionYieldYield-Q.md)
-* [Матемктика (Задачи)](math/README-Q.md)
+* [Математика (Задачи)](math/README-Q.md)
    * [Rounding1](math/Rounding1-Q.md)
    * [Rounding2](math/Rounding2-Q.md)
    * [Eps](math/Eps-Q.md)
