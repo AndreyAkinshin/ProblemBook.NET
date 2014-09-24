@@ -33,4 +33,4 @@ void Main()
   new Baz();
 }
 ```
-[Решение](./InheritanceNestedClass-Q.md)
+[Решение](./InheritanceNestedClass-A.md)
