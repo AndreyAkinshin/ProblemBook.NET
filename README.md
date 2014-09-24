@@ -2,8 +2,9 @@
 
 Cборник задач на знание платформы .NET и языка программирования C#.
 
-[Читать online](https://www.gitbook.io/book/andreyakinshin/problembookdotnet)
-[Скачать PDF](https://github.com/AndreyAkinshin/ProblemBook.NET/raw/master/ProblemBook.NET.pdf)
+[Читать online](http://andreyakinshin.gitbooks.io/problembookdotnet/)
+
+[Скачать PDF](https://github.com/AndreyAkinshin/ProblemBook.NET/raw/master/TeX/ProblemBook.NET.pdf)
 
 # Введение
 Данная книга представляет собой сборник задач на знание платформы .NET и языка программирования C#. Дабы у читателя и автора не возникло недопонимания, сразу хочется сказать, чем *не является* эта книга:
