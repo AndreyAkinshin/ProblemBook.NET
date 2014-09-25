@@ -151,7 +151,7 @@
   \end{source}
   Операции с переполнением \code{sbyte}, \code{byte}, \code{short}, \code{ushort}, \code{int}, \code{uint}, \code{long}, \code{ulong}, \code{char} выбрасывают исключение OverflowException в зависимости от \code{checked}/\code{unchecked}-контекста (ECMA-334, 11.1.5).
   Операции с переполнением \code{float}, \code{double} не выбрасывают исключение OverflowException (ECMA-334, 11.1.6).
-  Операции с переполнением \code{decimal} не выбрасывают исключение OverflowException (ECMA-334, 11.1.7).
+  Операции с переполнением \code{decimal} всегда выбрасывают исключение OverflowException (ECMA-334, 11.1.7).
 \end{onlysolution}
 \end{defproblem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
