@@ -7,5 +7,8 @@ del *.toc
 del *.vrb
 del *.gz(busy)
 del *.pyg
-pdflatex -shell-escape -synctex=1 -interaction=nonstopmode "ProblemBook.NET".tex
-pdflatex -shell-escape -synctex=1 -interaction=nonstopmode "ProblemBook.NET".tex
+python MdToTeXConverter.py
+pdflatex -shell-escape -synctex=1 -interaction=nonstopmode "ProblemBook.NET-ru".tex
+pdflatex -shell-escape -synctex=1 -interaction=nonstopmode "ProblemBook.NET-ru".tex
+pdflatex -shell-escape -synctex=1 -interaction=nonstopmode "ProblemBook.NET-en".tex
+pdflatex -shell-escape -synctex=1 -interaction=nonstopmode "ProblemBook.NET-en".tex

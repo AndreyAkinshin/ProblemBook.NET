@@ -1,5 +1,7 @@
 # «DivideByZero» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 var zero = 0;
 try
@@ -13,4 +15,5 @@ catch (DivideByZeroException)
   Console.WriteLine("DivideByZeroException");
 }
 ```
+
 [Решение](./DivideByZero-A.md)

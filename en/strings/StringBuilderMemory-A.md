@@ -1,4 +1,5 @@
 # “StringBuilderMemory” (Solution)
-Да, если предыдущим методом был `StringBuilder.ToString()`, а используемая версия CLR меньше 4.0.
+
+Yes, if we use the `StringBuilder.ToString()` method and the CLR version less 4.0.
 
 [Problem](./StringBuilderMemory-Q.md)

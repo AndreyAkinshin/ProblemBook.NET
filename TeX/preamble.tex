@@ -4,12 +4,6 @@
 \geometry{left=2cm}
 \geometry{right=1cm}
 
-\usepackage{cmap}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[english, russian]{babel}
-\usepackage{pscyr}
-
 \usepackage{lscape}
 \usepackage{indentfirst}
 
@@ -77,34 +71,6 @@
 \widowpenalty=10000
 
 \renewcommand\thesection{\arabic{section}}
-
-\usepackage{probsoln}
-\setkeys{probsoln}{fragile}
-
-\newcommand{\printproblems}[1]{%
-\begin{enumerate}%
-\foreachproblem[#1] 
-{%
-\begin{samepage}%
-\item \label{problem:\thisproblemlabel}%
-\thisproblem \nopagebreak \par \nopagebreak%
-\internalhref{solution:\thisproblemlabel}{Решение}%
-\end{samepage}%
-}%
-\end{enumerate}%
-}
-
-\newcommand{\printsolutions}[1]{%
-\showanswers%
-\begin{enumerate}%
-\foreachsolution[#1] {\item \label{solution:\thisproblemlabel}%
-\internalhref{problem:\thisproblemlabel}{Задача «\thisproblemlabel»}%
-\nopagebreak \par \nopagebreak%
-\thisproblem}%
-\end{enumerate}%
-}
-
-\newcommand{\todo}{\textcolor{red}{TODO}}
 
 \usepackage{minted}
 \usemintedstyle{vs}

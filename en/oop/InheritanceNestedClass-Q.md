@@ -1,5 +1,7 @@
 # “InheritanceNestedClass” (Problem)
+
 What will the following code display?
+
 ```cs
 class Foo
 {
@@ -33,4 +35,5 @@ void Main()
   new Baz();
 }
 ```
+
 [Solution](./InheritanceNestedClass-A.md)

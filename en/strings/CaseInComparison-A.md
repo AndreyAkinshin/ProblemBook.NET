@@ -1,5 +1,7 @@
 # “CaseInComparison” (Solution)
+
 No, it depends from current CultureInfo. An example:
+
 ```cs
 var a = "i";
 var b = "I";
@@ -10,5 +12,7 @@ Console.WriteLine(
 Console.WriteLine(
   string.Compare(a, b, StringComparison.OrdinalIgnoreCase)); //'0'
 ```
+
 See [The Turkey Test](http://www.moserware.com/2008/02/does-your-code-pass-turkey-test.html).
+
 [Problem](./CaseInComparison-Q.md)

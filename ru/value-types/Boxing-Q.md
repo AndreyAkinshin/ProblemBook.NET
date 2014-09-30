@@ -1,5 +1,6 @@
 # «Boxing» (Задача)
 Что выведет следующий код?
+
 ```cs
 struct Foo
 {   
@@ -25,4 +26,5 @@ void Main()
   Console.WriteLine(qux);
 }
 ```
+
 [Решение](./Boxing-A.md)

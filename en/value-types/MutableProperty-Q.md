@@ -1,5 +1,7 @@
 # “MutableProperty” (Problem)
+
 What will the following code display?
+
 ```cs
 public struct Foo
 {
@@ -20,4 +22,5 @@ void Main()
   Console.WriteLine(bar.Foo.Value);
 }
 ```
+
 [Solution](./MutableProperty-A.md)

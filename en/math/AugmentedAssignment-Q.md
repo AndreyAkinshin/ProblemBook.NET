@@ -1,5 +1,7 @@
 # “AugmentedAssignment” (Problem)
+
 What will the following code display?
+
 ```cs
 int a = 0;
 int Foo()
@@ -13,4 +15,5 @@ void Main()
   Console.WriteLine(a);
 }
 ```
+
 [Solution](./AugmentedAssignment-A.md)

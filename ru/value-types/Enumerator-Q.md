@@ -1,5 +1,7 @@
 # «Enumerator» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 var x = new 
   {
@@ -8,4 +10,5 @@ var x = new
 while (x.Items.MoveNext())
   Console.WriteLine(x.Items.Current);
 ```
+
 [Решение](./Enumerator-A.md)

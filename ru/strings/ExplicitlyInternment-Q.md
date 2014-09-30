@@ -1,5 +1,7 @@
 # «ExplicitlyInternment» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 var x = "AB";
 var y = new StringBuilder().Append('A').Append('B').ToString();
@@ -9,4 +11,5 @@ Console.WriteLine(x == z);
 Console.WriteLine((object)x == (object)y);
 Console.WriteLine((object)x == (object)z);
 ```
+
 [Решение](./ExplicitlyInternment-A.md)

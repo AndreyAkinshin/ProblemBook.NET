@@ -1,5 +1,7 @@
 # «Rounding2» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 Action<int,int> print = (a, b) =>
   Console.WriteLine("{0,2} = {1,2} * {2,3}   + {3,3}  ",
@@ -10,4 +12,5 @@ print(7, -3);
 print(-7, 3);
 print(-7, -3);
 ```
+
 [Решение](./Rounding2-A.md)

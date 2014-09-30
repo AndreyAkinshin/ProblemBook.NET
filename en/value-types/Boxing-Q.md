@@ -1,5 +1,7 @@
 # “Boxing” (Problem)
+
 What will the following code display?
+
 ```cs
 struct Foo
 {   
@@ -25,4 +27,5 @@ void Main()
   Console.WriteLine(qux);
 }
 ```
+
 [Solution](./Boxing-A.md)

@@ -1,5 +1,7 @@
 # «YieldExceptionYield» (Задача)
+
 В какой момент произойдёт `Exception`?
+
 ```
 public static IEnumerable<int> GetSmallNumbers()
 {
@@ -14,4 +16,5 @@ void Main()
   Console.WriteLine(evenNumbers.FirstOrDefault());
 }
 ```
+
 [Решение](./YieldExceptionYield-A.md)

@@ -1,5 +1,7 @@
 # “EnumerableToArray” (Problem)
+
 What will the following code display?
+
 ```cs
 public static int CreateNumber(int x)
 {
@@ -23,4 +25,5 @@ void Main()
   GetArray();
 }
 ```
+
 [Solution](./EnumerableToArray-A.md)

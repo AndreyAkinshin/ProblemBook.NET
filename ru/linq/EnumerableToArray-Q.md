@@ -1,5 +1,7 @@
 # «EnumerableToArray» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 public static int CreateNumber(int x)
 {
@@ -22,5 +24,7 @@ void Main()
 {
   GetArray();
 }
+
 ```
+
 [Решение](./EnumerableToArray-A.md)

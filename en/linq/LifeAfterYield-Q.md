@@ -1,5 +1,7 @@
 # “LifeAfterYield” (Problem)
+
 What will the following code display?
+
 ```cs
 public IEnumerable<int> Foo()
 {
@@ -12,4 +14,5 @@ void Main()
     Console.Write(i);
 }
 ```
+
 [Solution](./LifeAfterYield-A.md)

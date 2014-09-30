@@ -110,3 +110,7 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+# Custom
+TeX/content-en.tex
+TeX/content-ru.tex

@@ -1,5 +1,7 @@
 # «StructLayout» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 public struct Foo
 {
@@ -20,4 +22,5 @@ void Main()
   Console.WriteLine(Marshal.SizeOf(typeof(Bar)));
 }
 ```
+
 [Решение](./StructLayout-A.md)

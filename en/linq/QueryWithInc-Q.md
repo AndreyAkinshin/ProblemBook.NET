@@ -1,5 +1,7 @@
 # “QueryWithInc” (Problem)
+
 What will the following code display?
+
 ```cs
 int Inc(int x)
 {
@@ -18,4 +20,5 @@ void Main()
     Console.WriteLine("Number: " + number);
 }
 ```
+
 [Solution](./QueryWithInc-A.md)

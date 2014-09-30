@@ -1,5 +1,7 @@
 # «InheritanceNestedClass» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 class Foo
 {
@@ -33,4 +35,5 @@ void Main()
   new Baz();
 }
 ```
+
 [Решение](./InheritanceNestedClass-A.md)

@@ -1,6 +1,7 @@
 # Summary
 
-* [Введение](README.md)
+* [Введение](INTRODUCTION.md)
+<!--Задачи-->
 * [ООП (Задачи)](oop/README-Q.md)
    * [Overloading1](oop/Overloading1-Q.md)
    * [Overloading2](oop/Overloading2-Q.md)
@@ -44,6 +45,7 @@
    * [StringBuilderMemory](strings/StringBuilderMemory-Q.md)
    * [TextElementEnumerator](strings/TextElementEnumerator-Q.md)
    * [VerbatimString](strings/VerbatimString-Q.md)
+<!--Решения-->
 * [ООП (Решения)](oop/README-A.md)
    * [Overloading1](oop/Overloading1-A.md)
    * [Overloading2](oop/Overloading2-A.md)
@@ -70,7 +72,7 @@
    * [MutableProperty](value-types/MutableProperty-A.md)
    * [Enumerator](value-types/Enumerator-A.md)
    * [StructLayout](value-types/StructLayout-A.md)
-* [Строки (Задачи)](strings/README-A.md)
+* [Строки (Решения)](strings/README-A.md)
    * [PlusString](strings/PlusString-A.md)
    * [PlusChar](strings/PlusChar-A.md)
    * [CaseInComparison](strings/CaseInComparison-A.md)

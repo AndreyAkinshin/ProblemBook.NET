@@ -1,5 +1,7 @@
 # “CorruptedString” (Solution)
+
 You can use the internment mechanism:
+
 ```cs
 var s = "Hello";
 string.Intern(s);
@@ -11,4 +13,5 @@ unsafe
 }
 Console.WriteLine("Hello"); // Displays: "aaaaa"
 ```
+
 [Problem](./CorruptedString-Q.md)

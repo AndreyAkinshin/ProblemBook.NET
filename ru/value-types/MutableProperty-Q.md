@@ -1,5 +1,7 @@
 # «MutableProperty» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 public struct Foo
 {
@@ -20,4 +22,5 @@ void Main()
   Console.WriteLine(bar.Foo.Value);
 }
 ```
+
 [Решение](./MutableProperty-A.md)

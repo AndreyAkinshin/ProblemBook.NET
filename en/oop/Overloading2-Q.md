@@ -1,5 +1,7 @@
 # “Overloading2” (Problem)
+
 What will the following code display?
+
 ```cs
 class Foo
 {
@@ -36,4 +38,5 @@ void Main()
   new Baz().Quux(42);
 }
 ```
+
 [Solution](./Overloading2-A.md)

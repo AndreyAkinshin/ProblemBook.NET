@@ -1,5 +1,7 @@
 # «QueryWithInc» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 int Inc(int x)
 {
@@ -18,4 +20,5 @@ void Main()
     Console.WriteLine("Number: " + number);
 }
 ```
+
 [Решение](./QueryWithInc-A.md)

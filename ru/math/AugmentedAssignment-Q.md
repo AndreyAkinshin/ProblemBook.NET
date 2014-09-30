@@ -1,5 +1,7 @@
 # «AugmentedAssignment» (Задача)
+
 Что выведет следующий код?
+
 ```cs
 int a = 0;
 int Foo()
@@ -13,4 +15,5 @@ void Main()
   Console.WriteLine(a);
 }
 ```
+
 [Решение](./AugmentedAssignment-A.md)
