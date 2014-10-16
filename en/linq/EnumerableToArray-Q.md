@@ -3,26 +3,26 @@
 What will the following code display?
 
 ```cs
-public static int CreateNumber(int x)
+public static string GetString(string s)
 {
-  Console.WriteLine("CreateNumber: " + x);
-  return x;
+  Console.WriteLine("GetString: " + s);
+  return s;
 }
-public static IEnumerable<int> GetSmallNumbers()
+public static IEnumerable<string> GetStringEnumerable()
 {    
-  yield return CreateNumber(1);
-  yield return CreateNumber(2);
+  yield return GetString("Foo");
+  yield return GetString("Bar");
 }
-public static int[] GetArray()
+public static string[] EnumerableToArray()
 {
-  var numbers = GetSmallNumbers();
-  foreach (var number in numbers)
-    Console.WriteLine("GetArray:" + number);
-  return numbers.ToArray();
+  var strings = GetStringEnumerable();
+  foreach (var s in strings)
+    Console.WriteLine("EnumerableToArray: " + s);
+  return strings.ToArray();
 }
 void Main()
 {
-  GetArray();
+  EnumerableToArray();
 }
 ```
 
