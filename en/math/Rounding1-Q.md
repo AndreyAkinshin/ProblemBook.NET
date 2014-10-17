@@ -1,5 +1,7 @@
 # “Rounding1” (Problem)
+
 What will the following code display?
+
 ```cs
 Console.WriteLine(
   "| Number | Round | Floor | Ceiling | Truncate | Format |");
@@ -11,4 +13,5 @@ foreach (var x in new[] { -2.9, -0.5, 0.3, 1.5, 2.5, 2.9 })
     Math.Ceiling(x), Math.Truncate(x)));
 }
 ```
+
 [Solution](./Rounding1-A.md)
