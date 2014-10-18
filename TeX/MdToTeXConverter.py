@@ -126,8 +126,8 @@ def convert(locale):
                     enumerateMode = True
                     tex +=r"\begin{enumerate}"
                 renderedFile = renderFile(join(rootDir, link), True)
-                label = link.replace("/", "-").replace("-Q", "").replace("-A", "").replace(".md", "")
-                if "-Q.md" in link:
+                label = link.replace("/", "-").replace("-P", "").replace("-S", "").replace(".md", "")
+                if "-P.md" in link:
                     tex += "\n".join([
                         r"\begin{samepage}",
                         r"\item \label{problem:%s}" % (label, ),
@@ -135,7 +135,7 @@ def convert(locale):
                         r"\nopagebreak \par \nopagebreak",
                         r"\internalhref{solution:%s}{%s}" % (label, literalSolution),
                         r"\end{samepage}"]) + "\n"
-                if "-A.md" in link:
+                if "-S.md" in link:
                     tex += "\n".join([
                         r"\begin{samepage}",
                         r"\item \label{solution:%s}" % (label, ),
