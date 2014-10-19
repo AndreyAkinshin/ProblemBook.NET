@@ -3,7 +3,7 @@
 * [Введение](INTRODUCTION.md)
 <!--Задачи-->
 * [ООП (Задачи)](Oop/README-P.md)
-   * [Overloading1](Oop/Overloading1-P.md)
+   * [OverloadResolutionBasic](Oop/OverloadResolutionBasic-P.md)
    * [Overloading2](Oop/Overloading2-P.md)
    * [Overloading3](Oop/Overloading3-P.md)
    * [InheritanceNestedClass](Oop/InheritanceNestedClass-P.md)
@@ -47,7 +47,7 @@
    * [VerbatimString](Strings/VerbatimString-P.md)
 <!--Решения-->
 * [ООП (Решения)](Oop/README-S.md)
-   * [Overloading1](Oop/Overloading1-S.md)
+   * [OverloadResolutionBasic](Oop/OverloadResolutionBasic-S.md)
    * [Overloading2](Oop/Overloading2-S.md)
    * [Overloading3](Oop/Overloading3-S.md)
    * [InheritanceNestedClass](Oop/InheritanceNestedClass-S.md)

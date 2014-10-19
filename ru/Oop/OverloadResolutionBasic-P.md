@@ -1,6 +1,6 @@
-# “Overloading1” (Problem)
+# «OverloadResolutionBasic» (Задача)
 
-What will the following code display?
+Что выведет следующий код?
 
 ```cs
 void Foo(object a)
@@ -30,4 +30,4 @@ void Main()
 }
 ```
 
-[Solution](./Overloading1-S.md)
+[Решение](./OverloadResolutionBasic-S.md)

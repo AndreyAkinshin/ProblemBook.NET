@@ -13,7 +13,7 @@ END = r'\end{%s}'
 enclose = lambda t, s: '\n%s\n%s\n%s\n' % (BEGIN % (t, ), s, END % (t, ))
 
 def LaTeXEscape(str):
-    return str.replace("#", r"\#").replace("&gt;", ">").replace("&lt;", "<")
+    return str.replace("#", r"\#").replace("-&gt;", r"--->").replace("&gt;", ">").replace("&lt;", "<")
 
 class LaTeXRenderer(mistune.Renderer):
     def block_code(self, code, lang):
@@ -33,7 +33,7 @@ class LaTeXRenderer(mistune.Renderer):
         pass
 
     def list_item(self, text):
-        return r'\item ' + text + '\n'
+        return r'\item ' + LaTeXEscape(text) + '\n'
 
     def paragraph(self, text):
         return LaTeXEscape(text) + '\n\n'
@@ -105,6 +105,9 @@ def convert(locale):
     for summaryLine in summary:
         links = re.findall(summaryRegex, summaryLine)
         if summaryLine.startswith("<!--"):
+            if enumerateMode is True:
+                enumerateMode = False
+                tex += r"\end{enumerate}" + "\n"
             title = summaryLine[4:-4]
             text = r"\chapter*{%s}\addcontentsline{toc}{chapter}{%s}" % (title,title)
             tex += text + "\n"
@@ -114,7 +117,7 @@ def convert(locale):
             if not summaryLine.startswith(" "):
                 if enumerateMode is True:
                     enumerateMode = False
-                    tex +=r"\end{enumerate}"
+                    tex += r"\end{enumerate}" + "\n"
                 renderedFile = renderFile(join(rootDir, link))
                 if "INTRODUCTION.md" in link:
                     renderedFile = re.compile(r"\\section\{(.+)\}").sub(r"\\chapter*{\1}\\addcontentsline{toc}{chapter}{\1}", renderedFile).replace(r"\subsection", r"\section*")
@@ -124,11 +127,12 @@ def convert(locale):
             elif summaryLine.startswith(" "):
                 if enumerateMode is False:
                     enumerateMode = True
-                    tex +=r"\begin{enumerate}"
+                    tex += r"\begin{enumerate}" + "\n"
                 renderedFile = renderFile(join(rootDir, link), True)
                 label = link.replace("/", "-").replace("-P", "").replace("-S", "").replace(".md", "")
                 if "-P.md" in link:
                     tex += "\n".join([
+                        r"",
                         r"\begin{samepage}",
                         r"\item \label{problem:%s}" % (label, ),
                         renderedFile,
@@ -137,16 +141,18 @@ def convert(locale):
                         r"\end{samepage}"]) + "\n"
                 if "-S.md" in link:
                     tex += "\n".join([
-                        r"\begin{samepage}",
+                        r"",
+                        #r"\begin{samepage}",
                         r"\item \label{solution:%s}" % (label, ),
                         r"\internalhref{problem:%s}{%s %s%s%s}" % (label, literalProblem, literalLeftQuote, label, literalRightQuote),
                         r"\nopagebreak \par \nopagebreak",
                         renderedFile,
-                        r"\end{samepage}"]) + "\n"
+                        #r"\end{samepage}"],
+                        ""]) + "\n"
 
     if enumerateMode is True:
         enumerateMode = False
-        tex +=r"\end{enumerate}"
+        tex += r"\end{enumerate}" + "\n"
 
     with open("content-%s.tex" % (locale,), 'w') as f:
         f.write(tex)
