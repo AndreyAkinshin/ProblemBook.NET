@@ -4,7 +4,7 @@
 <!--Problems-->
 * [OOP (Problems)](Oop/README-P.md)
    * [OverloadResolutionBasic](Oop/OverloadResolutionBasic-P.md)
-   * [Overloading2](Oop/Overloading2-P.md)
+   * [OverloadResolutionOverride](Oop/OverloadResolutionOverride-P.md)
    * [Overloading3](Oop/Overloading3-P.md)
    * [InheritanceNestedClass](Oop/InheritanceNestedClass-P.md)
 * [LINQ (Problems)](Linq/README-P.md)
@@ -48,7 +48,7 @@
 <!--Solutions-->
 * [OOP (Solutions)](Oop/README-S.md)
    * [OverloadResolutionBasic](Oop/OverloadResolutionBasic-S.md)
-   * [Overloading2](Oop/Overloading2-S.md)
+   * [OverloadResolutionOverride](Oop/OverloadResolutionOverride-S.md)
    * [Overloading3](Oop/Overloading3-S.md)
    * [InheritanceNestedClass](Oop/InheritanceNestedClass-S.md)
 * [LINQ (Solutions)](Linq/README-S.md)

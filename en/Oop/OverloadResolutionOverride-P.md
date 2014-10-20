@@ -1,6 +1,6 @@
-# «Overloading2» (Задача)
+# “OverloadResolutionOverride” (Problem)
 
-Что выведет следующий код?
+What will the following code display?
 
 ```cs
 class Foo
@@ -39,4 +39,4 @@ void Main()
 }
 ```
 
-[Решение](./Overloading2-S.md)
+[Solution](./OverloadResolutionOverride-S.md)
