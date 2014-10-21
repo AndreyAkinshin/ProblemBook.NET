@@ -1,4 +1,4 @@
-# «Overloading3» (Задача)
+# «OverloadResolutionInheritance» (Задача)
 
 Что выведет следующий код?
 
@@ -36,7 +36,7 @@ class Baz : Bar
   {
     name = "Baz";
     Quux();
-  ((Foo)this).Quux();
+    ((Foo)this).Quux();
   }
 }
 void Main()
@@ -45,4 +45,4 @@ void Main()
 }
 ```
 
-[Решение](./Overloading3-S.md)
+[Решение](./OverloadResolutionInheritance-S.md)
