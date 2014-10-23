@@ -3,15 +3,15 @@
 Что выведет следующий код?
 
 ```cs
-public IEnumerable<int> Foo()
+IEnumerable<string> Foo()
 {
-  yield return 1;
-  Console.WriteLine("Foo");
+  yield return "Bar";
+  Console.WriteLine("Baz");
 }
 void Main()
 {
-  foreach (var i in Foo())
-    Console.Write(i);
+  foreach (var str in Foo())
+    Console.Write(str);
 }
 ```
 
