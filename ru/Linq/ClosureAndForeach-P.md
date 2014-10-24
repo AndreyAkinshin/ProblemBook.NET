@@ -1,6 +1,6 @@
-# “Closure” (Problem)
+# «ClosureAndForeach» (Задача)
 
-What will the following code display?
+Что выведет следующий код?
 
 ```cs
 var actions = new List<Action>();
@@ -10,4 +10,4 @@ foreach (var action in actions)
   action();
 ```
 
-[Solution](./Closure-S.md)
+[Решение](./ClosureAndForeach-S.md)
