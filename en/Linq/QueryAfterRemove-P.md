@@ -3,9 +3,9 @@
 What will the following code display?
 
 ```cs
-var list = new List<string> {"A", "BB", "CCC"};
-var query = list.Where(c => c.Length == 2);
-list.Remove("BB");
+var list = new List<string> { "Foo", "Bar", "Baz" };
+var query = list.Where(c => c.StartsWith("B"));
+list.Remove("Bar");
 Console.WriteLine(query.Count());
 ```
 
