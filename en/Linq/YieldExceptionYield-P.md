@@ -2,7 +2,7 @@
 
 At what point will happen `Exception`?
 
-```
+```cs
 public static IEnumerable<int> GetSmallNumbers()
 {
   yield return 1;
