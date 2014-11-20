@@ -48,6 +48,7 @@
    * [EscapeSlash](Strings/EscapeSlash-P.md)
 * [Многопоточность (Задачи)](Multithreading/README-P.md)
    * [ThreadStaticVariable](Multithreading/ThreadStaticVariable-P.md)
+   * [LockSlimInFinalizer](Multithreading/LockSlimInFinalizer-P.md)
 <!--Решения-->
 * [ООП (Решения)](Oop/README-S.md)
    * [OverloadResolutionBasic](Oop/OverloadResolutionBasic-S.md)
@@ -95,3 +96,4 @@
    * [EscapeSlash](Strings/EscapeSlash-S.md)
 * [Многопоточность (Решения)](Multithreading/README-S.md)
    * [ThreadStaticVariable](Multithreading/ThreadStaticVariable-S.md)
+   * [LockSlimInFinalizer](Multithreading/LockSlimInFinalizer-S.md)

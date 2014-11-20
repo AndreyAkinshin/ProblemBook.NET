@@ -48,6 +48,7 @@
    * [EscapeSlash](Strings/EscapeSlash-P.md)
 * [Multithreading (Problems)](Multithreading/README-P.md)
    * [ThreadStaticVariable](Multithreading/ThreadStaticVariable-P.md)
+   * [LockSlimInFinalizer](Multithreading/LockSlimInFinalizer-P.md)
 <!--Solutions-->
 * [OOP (Solutions)](Oop/README-S.md)
    * [OverloadResolutionBasic](Oop/OverloadResolutionBasic-S.md)
@@ -95,3 +96,4 @@
    * [EscapeSlash](Strings/EscapeSlash-S.md)
 * [Multithreading (Solutions)](Multithreading/README-S.md)
    * [ThreadStaticVariable](Multithreading/ThreadStaticVariable-S.md)
+   * [LockSlimInFinalizer](Multithreading/LockSlimInFinalizer-S.md)
