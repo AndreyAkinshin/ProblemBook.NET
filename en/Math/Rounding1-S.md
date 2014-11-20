@@ -1,5 +1,7 @@
 # “Rounding1” (Solution)
 
+## Answer
+
 ```
 | Number | Round | Floor | Ceiling | Truncate | Format |
 |   -2.9 |    -3 |    -3 |      -2 |       -2 |     -3 |
@@ -9,6 +11,8 @@
 |    2.5 |     2 |     2 |       3 |        2 |      3 |
 |    2.9 |     3 |     2 |       3 |        2 |      3 |
 ```
+
+## Explanation
 
 If the number is exactly halfway between two possibilities, the following rules will work:
 

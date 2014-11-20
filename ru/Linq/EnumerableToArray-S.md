@@ -1,5 +1,7 @@
 # «EnumerableToArray» (Решение)
 
+## Ответ
+
 ```
 GetString: Foo
 EnumerableToArray: Foo
@@ -8,6 +10,8 @@ EnumerableToArray: Bar
 GetString: Foo
 GetString: Bar
 ```
+
+## Объяснение
 
 LINQ-запросы являются ленивыми, т.е. реализуют отложенное исполнение. Это означает, что если сфомировать запрос и не вызвать для него явно метод вроде [ToArray()](msdn.microsoft.com/library/vstudio/bb298736.aspx) или [ToList()](http://msdn.microsoft.com/library/vstudio/bb342261.aspx), то выполнение запроса будет отложено до того момента, пока мы явно не затребуем результатов. Таким образом, строка
 

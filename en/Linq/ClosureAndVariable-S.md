@@ -1,8 +1,12 @@
 # “ClosureAndVariable” (Solution)
 
+## Answer
+
 ```
 2
 ```
+
+## Explanation
 
 The code is translated into the following form:
 

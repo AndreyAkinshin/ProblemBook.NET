@@ -1,5 +1,7 @@
 # “OverloadResolutionBasic” (Solution)
 
+## Answer
+
 ```
 params object[]
 params object[]
@@ -7,6 +9,8 @@ params T[]
 params T[]
 object, object
 ```
+
+## Explanation
 
 There are methods:
 
@@ -37,7 +41,7 @@ The `object, object` option is inaccessible because of number of arguments. The 
 
 The `object` option is inaccessible because of number of arguments. There is exactly one option without the `params` keyword: `object, object`. It is more preferable.
 
-See also:
+## Links
 
 * [“Overload resolution”](http://msdn.microsoft.com/library/aa691336.aspx), [“Method invocations”](http://msdn.microsoft.com/library/aa691356.aspx), [“Applicable function member”](http://msdn.microsoft.com/en-US/library/aa691337.aspx) in MSDN
 * [“Overloading”](http://csharpindepth.com/Articles/General/Overloading.aspx) in [“C# in Depth”](http://csharpindepth.com/)

@@ -1,5 +1,7 @@
 # “Boxing” (Solution)
 
+## Answer
+
 ```
 Foo
 Foo

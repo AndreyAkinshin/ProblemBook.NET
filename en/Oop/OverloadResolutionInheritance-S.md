@@ -1,10 +1,14 @@
 # “OverloadResolutionInheritance” (Solution)
 
+## Answer
+
 ```
 Bar.Quux(),  
 Bar.Quux(params object[])
 Bar.Quux(),  Baz
 ```
+
+## Explanation
 
 A schematic calls tree of the code:
 
@@ -25,7 +29,8 @@ Main();
       Console.WriteLine("Bar.Quux(),  " + name); // name == "Baz"
 ```
 
-See also:
+## Links
+
 * [The “OverloadResolutionOverride” problem](./OverloadResolutionOverride-P.md)
 
 [Problem](./OverloadResolutionInheritance-P.md)

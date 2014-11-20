@@ -1,8 +1,12 @@
 # “ClosureAndForeach” (Problem)
 
+## Answer
+
 C# 1.0 — C# 4.0: `3 3 3`
 
 C# 5.0+: `1 2 3`
+
+## Explanation
 
 In C# 1.0 — C# 4.0, the code from the problem will be transformed in the following code:
 

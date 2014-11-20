@@ -1,8 +1,12 @@
 # “LifeAfterYield” (Solution)
 
+## Answer
+
 ```
 BarBaz
 ```
+
+## Explanation
 
 The code from the problem will be transformed in the following code (some part of the code specifically removed for better understanding):
 

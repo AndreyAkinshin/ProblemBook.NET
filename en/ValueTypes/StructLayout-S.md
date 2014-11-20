@@ -1,5 +1,7 @@
 # “StructLayout” (Solution)
 
+## Answer
+
 ```
 8
 8

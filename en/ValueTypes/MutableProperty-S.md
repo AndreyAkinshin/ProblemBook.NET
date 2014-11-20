@@ -1,5 +1,7 @@
 # “MutableProperty” (Solution)
 
+## Answer
+
 ```
 0
 ```

@@ -1,5 +1,7 @@
 # “CorruptedString” (Solution)
 
+## Answer
+
 You can use the internment mechanism:
 
 ```cs

@@ -1,6 +1,12 @@
 # “ExceptionYieldYield” (Solution)
 
-Call of `evenNumbers.FirstOrDefault()`. The lines 
+## Answer
+
+Call of `evenNumbers.FirstOrDefault()`.
+
+## Explanation
+
+The lines
 
 ```cs
 var numbers = GetSmallNumbers();

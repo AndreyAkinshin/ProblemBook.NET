@@ -1,6 +1,12 @@
 # «ExceptionYieldYield» (Решение)
 
-При вызове `evenNumbers.FirstOrDefault()`. Строчки 
+## Ответ
+
+При вызове `evenNumbers.FirstOrDefault()`.
+
+## Объяснение
+
+Строчки
 
 ```cs
 var numbers = GetSmallNumbers();

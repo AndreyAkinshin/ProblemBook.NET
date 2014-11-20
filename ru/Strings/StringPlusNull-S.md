@@ -1,8 +1,12 @@
 # «StringPlusNull» (Решение)
 
+## Ответ
+
 ```
 False
 ```
+
+## Объяснение
 
 Фрагмент из [C# Language Specification](http://www.microsoft.com/downloads/en/details.aspx?FamilyID=DFBF523C-F98C-4804-AFBD-459E846B268E), раздел 7.8.4 Addition operator:
 
@@ -25,7 +29,7 @@ These overloads of the binary + operator perform string concatenation. **If an o
 "" != null
 ```
 
-Ссылки на исходный код:
+## Ссылки
 
 * [Microsoft Reference Source](http://referencesource.microsoft.com/#mscorlib/system/string.cs)
 * [Mono 3.10.0 Source](https://github.com/mono/mono/blob/mono-3.10.0/mcs/class/corlib/System/String.cs)

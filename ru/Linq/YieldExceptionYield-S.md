@@ -1,6 +1,12 @@
 # «YieldExceptionYield» (Решение)
 
-Exception не произойдёт. Действительно, строка
+## Ответ
+
+Exception не произойдёт.
+
+## Объяснение
+
+Действительно, строка
 
 ```cs
 var numbers = GetSmallNumbers();

@@ -1,5 +1,7 @@
 # «Overflow» (Решение)
 
+## Ответ
+
 ```
 Checked   Int32   increased max: OverflowException
 Checked   Double  increased max: 1,79769313486232E+308
@@ -8,6 +10,8 @@ Unchecked Int32   increased max: -2147483607
 Unchecked Double  increased max: 1,79769313486232E+308
 Unchecked Decimal increased max: OverflowException
 ```
+
+## Объяснение
 
 Операции с переполнением `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char` выбрасывают исключение `OverflowException` в зависимости от `checked`/`unchecked`-контекста (ECMA-334, 11.1.5).
 

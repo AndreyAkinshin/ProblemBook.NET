@@ -1,10 +1,14 @@
 # «OverloadResolutionInheritance» (Решение)
 
+## Ответ
+
 ```
 Bar.Quux(),  
 Bar.Quux(params object[])
 Bar.Quux(),  Baz
 ```
+
+## Объяснение
 
 Ниже представлен схематический порядок вызовов в приведённом коде:
 
@@ -31,7 +35,7 @@ Main();
       // name == "Baz"
 ```
 
-См. также:
+## Ссылки
 
 * [Задача «OverloadResolutionOverride»](./OverloadResolutionOverride-P.md)
 

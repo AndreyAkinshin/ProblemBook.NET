@@ -1,6 +1,12 @@
 # “YieldExceptionYield” (Solution)
 
-Exception is not going to happen. Indeed, the line
+## Answer
+
+Exception is not going to happen.
+
+## Explanation
+
+Indeed, the line
 
 ```cs
 var numbers = GetSmallNumbers();

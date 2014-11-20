@@ -1,5 +1,7 @@
 # “EnumerableToArray” (Solution)
 
+## Answer
+
 ```
 GetString: Foo
 EnumerableToArray: Foo
@@ -8,6 +10,8 @@ EnumerableToArray: Bar
 GetString: Foo
 GetString: Bar
 ```
+
+## Explanation
 
 LINQ queries use deferred/lazy execution. It means, a LINQ query without a cast method like [ToArray()](msdn.microsoft.com/library/vstudio/bb298736.aspx) or [ToList()](http://msdn.microsoft.com/library/vstudio/bb342261.aspx) is not executed immediately. The execution will be deferred until we do not explicitly require the results. Thus, the line
 

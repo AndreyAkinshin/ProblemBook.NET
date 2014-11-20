@@ -82,6 +82,10 @@ def renderFile(filename, isProblem = False):
         content = f.readlines()
     if isProblem:
         content = content[1:len(content)-2]
+    if isProblem:
+        for x in xrange(1, len(content)):
+            if (content[x].startswith("##")):
+                content[x] = r"\textbf{" + content[x][2:].strip() + r"}" + "\n"
     content = "".join(content)
     return md.render(content)
 
@@ -129,7 +133,7 @@ def convert(locale):
                     enumerateMode = True
                     tex += r"\begin{enumerate}" + "\n"
                 renderedFile = renderFile(join(rootDir, link), True)
-                label = link.replace("/", "-").replace("-P", "").replace("-S", "").replace(".md", "")
+                label = link.replace("/", ":").replace("-P", "").replace("-S", "").replace(".md", "")
                 if "-P.md" in link:
                     tex += "\n".join([
                         r"",

@@ -1,5 +1,7 @@
 # «OverloadResolutionBasic» (Решение)
 
+## Ответ
+
 ```
 params object[]
 params object[]
@@ -7,6 +9,8 @@ params T[]
 params T[]
 object, object
 ```
+
+## Объяснение
 
 Итак, у нас имеются методы:
 
@@ -36,7 +40,7 @@ object, object
 * `Foo(new Bar(), new object())` -> `object, object`
 Вариант `object` не подходит по количеству элементов. Среди оставшихся вариантов существует ровно одна версия без `params`: `object, object`. Она будет более предпочтительна.
 
-См. также:
+## Ссылки
 
 * [«Overload resolution»](http://msdn.microsoft.com/library/aa691336.aspx), [«Method invocations»](msdn.microsoft.com/library/aa691356.aspx), [«Applicable function member»](http://msdn.microsoft.com/en-US/library/aa691337.aspx) в MSDN
 * Глава [«Overloading»](http://csharpindepth.com/Articles/General/Overloading.aspx) в книге [«C# in Depth»](http://csharpindepth.com/)
