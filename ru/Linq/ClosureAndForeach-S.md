@@ -2,13 +2,13 @@
 
 ## Ответ
 
-C# 1.0 — C# 4.0: `3 3 3`
+В старых версиях компиляторов: `3 3 3`.
 
-C# 5.0+: `1 2 3`
+В новых версиях компиляторов: `1 2 3`.
 
 ## Объяснение
 
-В версиях C# 1.0 — C# 4.0 приведённый код превращался в следующую конструкцию:
+В старых версиях компиляторов приведённый код превращался в следующую конструкцию:
 
 ```cs
 public void Run()
@@ -37,7 +37,7 @@ private sealed class DisplayClass
 
 Таким образом, все три элемента списка на самом деле являются одним и тем же делегатом, поэтому в консоли мы увидим три одинаковых значения, равных последнему значению `i`.
 
-В С# 5.0+ произошли изменения, новый вариант кода:
+В современных версиях компиляторов произошли изменения, новый вариант кода:
 
 ```cs
 public void Run()
@@ -65,5 +65,23 @@ private sealed class DisplayClass
 ```
 
 Теперь каждый элемент списка ссылается на собственный делегат, так что все полученные значения будут разными.
+
+Примеры:
+
+```
+Mono compiler 2.4.4                       : 3 3 3
+Mono compiler 3.10.0                      : 1 2 3
+Mono compiler 3.10.0        langversion=4 : 1 2 3
+MS compiler 3.5.30729.7903                : 3 3 3
+MS compiler 4.0.30319.1                   : 3 3 3
+MS compiler 4.0.30319.33440               : 1 2 3
+MS compiler 4.0.30319.33440 langversion=4 : 1 2 3
+```
+
+## Ссылки
+
+* [ItDepends.NET: ClosureAndForeach](https://github.com/AndreyAkinshin/ItDepends.NET/tree/master/ClosureAndForeach)
+* [Eric Lippert: Closing over the loop variable considered harmful](http://blogs.msdn.com/b/ericlippert/archive/2009/11/12/closing-over-the-loop-variable-considered-harmful.aspx)
+* [Eric Lippert: Closing over the loop variable, part two](http://blogs.msdn.com/b/ericlippert/archive/2009/11/16/closing-over-the-loop-variable-part-two.aspx)
 
 [Задача](./ClosureAndForeach-P.md)
