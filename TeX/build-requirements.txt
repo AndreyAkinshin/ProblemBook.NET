@@ -1,0 +1,3 @@
+Python 2.7 with packages: mistune, Pygments
+TeX
+pscyr
