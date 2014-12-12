@@ -14,13 +14,13 @@ var b = "I";
 Thread.CurrentThread.CurrentCulture = 
   CultureInfo.CreateSpecificCulture("tr-TR");
 Console.WriteLine(
-  string.Compare(a.ToUpper(), b)); //'1'
+  string.Compare(a.ToUpper(), b.ToUpper())); //'1'
 Console.WriteLine(
   string.Compare(a, b, StringComparison.OrdinalIgnoreCase)); //'0'
 ```
 
 ## Links
 
-* [The Turkey Test](http://www.moserware.com/2008/02/does-your-code-pass-turkey-test.html).
+* [The Turkey Test](http://www.moserware.com/2008/02/does-your-code-pass-turkey-test.html)
 
 [Problem](./CaseInComparison-P.md)

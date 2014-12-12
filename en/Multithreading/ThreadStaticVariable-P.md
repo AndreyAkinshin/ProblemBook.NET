@@ -4,7 +4,7 @@ What will the following code display?
 
 ```cs
 [ThreadStatic]
-static int Foo = 42;
+static readonly int Foo = 42;
 
 void Main()
 {
