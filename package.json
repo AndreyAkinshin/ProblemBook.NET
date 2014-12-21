@@ -1,0 +1,13 @@
+{
+    "name": "ProblemBook.NET",
+    "version": "0.0.0",
+    "description": "Free book with .NET/C# problems",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AndreyAkinshin/ProblemBook.NET.git"
+    },
+    "author": "Andrey Akinshin <andrey.akinshin@gmail.com>",
+    "dependencies": {
+        "gitbook-plugin-ga": "*"
+    }
+}
