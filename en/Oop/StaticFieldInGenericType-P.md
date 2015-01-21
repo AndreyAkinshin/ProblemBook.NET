@@ -1,4 +1,4 @@
-# “StaticFieldOfGeneric” (Problem)
+# “StaticFieldInGenericType” (Problem)
 
 What will the following code display?
 
@@ -14,4 +14,4 @@ void Main()
 }
 ```
 
-[Solution](./StaticFieldOfGeneric-S.md)
+[Solution](./StaticFieldInGenericType-S.md)

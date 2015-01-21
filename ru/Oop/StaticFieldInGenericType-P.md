@@ -1,4 +1,4 @@
-# «StaticFieldOfGeneric» (Задача)
+# «StaticFieldInGenericType» (Задача)
 
 Что выведет следующий код?
 
@@ -14,4 +14,4 @@ void Main()
 }
 ```
 
-[Решение](./StaticFieldOfGeneric-S.md)
+[Решение](./StaticFieldInGenericType-S.md)
