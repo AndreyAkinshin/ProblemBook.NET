@@ -1,13 +1,7 @@
 # «ClosureAndForeach» (Задача)
 
-Что выведет следующий код?
+{{ book.ru.WhatDisplayMessage }}
 
-```cs
-var actions = new List<Action>();
-foreach (var i in Enumerable.Range(1, 3))
-  actions.Add(() => Console.WriteLine(i));
-foreach (var action in actions)
-  action();
-```
+{% include "../../data/Linq/ClosureAndForeach/Source.md" %}
 
 [Решение](./ClosureAndForeach-S.md)

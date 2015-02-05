@@ -4,5 +4,11 @@
         "ga": {
             "token": "UA-41419012-3"
         }
+    },
+    "ru": {
+        "WhatDisplayMessage": "Что выведет следующий код?"
+    },
+    "en": {
+        "WhatDisplayMessage": "What will the following code display?"
     }
 }
