@@ -20,7 +20,7 @@ The proper way to compare `double` numbers is comparing with some epsilon. An ex
 ```cs
 public static void IsEqual(double a, double b, double eps = 1e-9)
 {
-    return Math.Abs(a - b) < 1e-9;
+    return Math.Abs(a - b) < eps;
 }
 ```
 
