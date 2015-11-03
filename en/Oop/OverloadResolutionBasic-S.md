@@ -31,11 +31,11 @@ The `object, object` option is inaccessible because of number of arguments. The 
 
 * `Foo(new Bar())` -> `params T[]`
 
-The `object, object` option is inaccessible because of number of arguments. The `object` and `params object[]` options request additional  implicitly conversion `Bar` to `object`. So, the `params T[]` (or `params Bar[]`) option is more preferable.
+The `object, object` option is inaccessible because of number of arguments. The `object` and `params object[]` options request an additional implicitly conversion: `Bar` to `object`. So, the `params T[]` (or `params Bar[]`) option is more preferable.
 
 * `Foo(new Bar(), new Bar())` -> `params T[]`
 
-The `object, object` option is inaccessible because of number of arguments. The `object` and `params object[]` options request additional  implicitly conversion `Bar` to `object`. So, the `params T[]` (or `params Bar[]`) option is more preferable.
+The `object` option is inaccessible because of number of arguments. The `object, object` and `params object[]` options request an additional implicitly conversion: `Bar` to `object`. So, the `params T[]` (or `params Bar[]`) option is more preferable.
 
 * `Foo(new Bar(), new object())` -> `object, object`
 
