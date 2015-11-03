@@ -1,4 +1,4 @@
-# “ClosureAndFor” (Problem)
+# “ClosureAndFor” (Solution)
 
 ## Answer
 
@@ -8,4 +8,4 @@
 3
 ```
 
-[Solution](./ClosureAndFor-P.md)
+[Problem](./ClosureAndFor-P.md)

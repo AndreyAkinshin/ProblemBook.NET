@@ -1,4 +1,4 @@
-# “ClosureAndForeach” (Problem)
+# “ClosureAndForeach” (Solution)
 
 ## Answer
 
@@ -84,4 +84,4 @@ MS compiler 4.0.30319.33440 langversion=4 : 1 2 3
 * [Eric Lippert: Closing over the loop variable considered harmful](http://blogs.msdn.com/b/ericlippert/archive/2009/11/12/closing-over-the-loop-variable-considered-harmful.aspx)
 * [Eric Lippert: Closing over the loop variable, part two](http://blogs.msdn.com/b/ericlippert/archive/2009/11/16/closing-over-the-loop-variable-part-two.aspx)
 
-[Solution](./ClosureAndForeach-P.md)
+[Problem](./ClosureAndForeach-P.md)
