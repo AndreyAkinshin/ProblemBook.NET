@@ -24,4 +24,8 @@ public static void IsEqual(double a, double b, double eps = 1e-9)
 }
 ```
 
+## Links
+
+* [0.30000000000000004.com](http://0.30000000000000004.com/)
+
 [Problem](./Eps-P.md)
