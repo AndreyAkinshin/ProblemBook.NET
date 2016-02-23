@@ -18,7 +18,7 @@ Console.WriteLine("{0:R}", 0.1+0.2-0.3);
 The proper way to compare `double` numbers is comparing with some epsilon. An example:
 
 ```cs
-public static void IsEqual(double a, double b, double eps = 1e-9)
+public static bool IsEqual(double a, double b, double eps = 1e-9)
 {
     return Math.Abs(a - b) < eps;
 }
