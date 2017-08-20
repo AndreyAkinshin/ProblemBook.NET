@@ -43,7 +43,7 @@ The `object` option is inaccessible because of number of arguments. There is exa
 
 ## Links
 
-* [“Overload resolution”](http://msdn.microsoft.com/library/aa691336.aspx), [“Method invocations”](http://msdn.microsoft.com/library/aa691356.aspx), [“Applicable function member”](http://msdn.microsoft.com/en-US/library/aa691337.aspx) in MSDN
+* [“Overload resolution”](http://msdn.microsoft.com/library/aa691336.aspx), [“Applicable function member”](http://msdn.microsoft.com/en-US/library/aa691337.aspx) in MSDN
 * [“Overloading”](http://csharpindepth.com/Articles/General/Overloading.aspx) in [“C# in Depth”](http://csharpindepth.com/)
 
 [Problem](./OverloadResolutionBasic-P.md)
