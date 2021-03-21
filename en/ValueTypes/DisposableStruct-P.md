@@ -3,32 +3,32 @@
 What will the following code display?
 
 ```cs
-public static  void Main()
+static void Main()
 {
-	var foo = new Foo();
+  var foo = new Foo();
 
-	using (foo)
-	{
-		foo.PrintFoo();
-	}
+  using (foo)
+  {
+    foo.PrintFoo();
+  }
 
-	Console.WriteLine(foo.Disposed);
+  Console.WriteLine(foo.Disposed);
 }
 
 
 struct Foo : IDisposable
 {
-	public bool Disposed { get; private set; }
+  public bool Disposed { get; private set; }
         
-	public void Dispose()
-	{
-		Disposed = true;
-	}
+  public void Dispose()
+  {
+    Disposed = true;
+  }
 
-	public void PrintFoo()
-	{
-		Console.WriteLine("Foo");
-	}
+  public void PrintFoo()
+  {
+    Console.WriteLine("Foo");
+  }
 }
 ```
 
